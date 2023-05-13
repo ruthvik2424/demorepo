@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS = app
 
 
-@app.route('/calculator', methods=['POST'])
+@app.route('/calculate', methods=['POST'])
 def calculator():
     data = request.get_data()
     num1 = data['num1']
