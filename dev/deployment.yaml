@@ -16,5 +16,5 @@ metadata:
         - name: mydemoapp
           image: docker.io/ruthvik2424/demoproject:1.3.0
           ports:
-          - containerPort: 8080
+          - containerPort: 9000
       
