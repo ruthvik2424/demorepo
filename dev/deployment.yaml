@@ -1,20 +1,21 @@
-apiversion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mydemoapp
-  spec:
-    selector:
-      matchLabels:
-        app: mydemoapp
-    replicas: 2
-    template:
-      metadata:
-        labels:
-          app: mydemoapp
-      spec:
-        containers:
-          - name: mydemoapp
-          - image: ruthvik2424/demoproject:1.4.0
-          - ports:
-              - containerPort: 9000
+  name: myapp
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: nanajanashia/argocd-app:1.2
+        ports:
+        - containerPort: 8080
+
       
