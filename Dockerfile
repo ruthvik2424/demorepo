@@ -1,4 +1,6 @@
 FROM registry.redhat.io/ubi9/ubi
+LABEL maintainer="Ruthvik Shinde ruthvikshinde553@gmail.com"
+LABEL decription="This is a custom image which contain an ML Model running in Flask api"
 WORKDIR /code
 COPY ./app.py /code 
 COPY ./mode5.py /code 
