@@ -14,7 +14,7 @@ metadata:
     spec:
       containers:
         - name: mydemoapp
-          image: ruthvik2424/demoproject:1.4.0
-          ports:
+        - image: ruthvik2424/demoproject:1.4.0
+        - ports:
             - containerPort: 9000
       
