@@ -2,19 +2,19 @@ apiversion: apps/v1
 kind: Deployment
 metadata:
   name: mydemoapp
- spec:
-  selector:
-    matchLabels:
-      app: mydemoapp
+  spec:
+    selector:
+      matchLabels:
+        app: mydemoapp
     replicas: 2
     template:
       metadata:
         labels:
           app: mydemoapp
-      spec:
-        containers:
+    spec:
+      containers:
         - name: mydemoapp
           image: ruthvik2424/demoproject:1.4.0
           ports:
-          - containerPort: 9000
+            - containerPort: 9000
       
