@@ -11,10 +11,10 @@ metadata:
       metadata:
         labels:
           app: mydemoapp
-    spec:
-      containers:
-        - name: mydemoapp
-        - image: ruthvik2424/demoproject:1.4.0
-        - ports:
-            - containerPort: 9000
+      spec:
+        containers:
+          - name: mydemoapp
+          - image: ruthvik2424/demoproject:1.4.0
+          - ports:
+              - containerPort: 9000
       
