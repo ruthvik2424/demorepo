@@ -3,11 +3,10 @@ import librosa
 import numpy as np
 from keras.models import Sequential, model_from_json
 from flask import Flask, request
-from flask_restful import Api, Resource
 import base64
+import tempfile
 
 app = Flask(__name__)
-api = Api(app)
 
 # check if the model file exists
 model_file = 'stutter_detection_modela.h5'
@@ -25,15 +24,23 @@ loaded_model = model_from_json(loaded_model_json)
 # load the saved model weights into the model
 loaded_model.load_weights(model_file)
 
+# compile the model
+loaded_model.compile(optimizer='adam', loss='binary_crossentropy')
+
 
 @app.route('/process', methods=['POST'])
 def post():
     # Get the Base64-encoded audio data from the request body
-    data = request.data
+    data = request.json
     base64Audio = data['audioData']
 
     # Decode the Base64-encoded audio data
     audioBytes = base64.b64decode(base64Audio)
+
+    # Save the audio data as a temporary file
+    with tempfile.NamedTemporaryFile(delete=False) as audio_file:
+        audio_file.write(audioBytes)
+        audio_path = audio_file.name
 
     # Process the audio data as needed
     def extract_features(audio_path):
@@ -44,38 +51,27 @@ def post():
         return features
 
     # extract features from the audio file to be predicted
-    audio_file = audioBytes
-    features = extract_features(audio_file)
+    features = extract_features(audio_path)
 
     # predict the class probability of the audio file
     probabilities = loaded_model.predict(np.array([features]))
     predicted_class = round(probabilities[0][0])
 
-    # print the predicted class and probability
-
-    def predict():
-        if predicted_class == 0:
-            result1 = "The audio file is normal with probability:", 1 - \
-                probabilities[0][0]
-        else:
-            result1 = "The audio file contains stuttering with probability:", probabilities[
-                0][0]
-        return result1
-
     # calculate the accuracy of the prediction
     test_X = np.array([features])
     test_y = np.array([1])  # provide the true label of the audio file
-    loss, accuracy = loaded_model.evaluate(test_X, test_y)
-    result2 = "Accuracy:", accuracy
+    evaluation_result = loaded_model.evaluate(test_X, test_y)
+    loss = evaluation_result
+    accuracy = evaluation_result
 
-    def final_result():
-        final_result = {
-            'message': 'Audio data received and processed',
-            "probablity": result1,
-            "Accuracy": result2
-        }
-        return final_result
-    return final_result
+    # Return the results as a JSON response
+    result = {
+        'message': 'Audio data received and processed',
+        'predicted_class': int(predicted_class),
+        'probability': float(probabilities[0][0]),
+        'accuracy': float(accuracy)
+    }
+    return result
 
 
 if __name__ == '__main__':
