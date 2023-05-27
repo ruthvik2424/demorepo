@@ -27,7 +27,7 @@ loaded_model.load_weights(model_file)
 
 
 @app.route('/process', methods=['POST'])
-def post(self):
+def post():
     # Get the Base64-encoded audio data from the request body
     data = request.data
     base64Audio = data['audioData']
