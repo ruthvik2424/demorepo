@@ -5,7 +5,9 @@ metadata:
 spec:
   selector:
     app: mydemoapp
+    type: LoadBalancer
   ports:
   - port: 5000
     protocol: TCP
     targetPort: 5000
+    nodePort: 5000
