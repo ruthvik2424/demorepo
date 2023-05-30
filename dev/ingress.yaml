@@ -11,5 +11,6 @@ spec:
             path: "/process"
             backend:
               service:
-                serviceName: myapi-service
-                servicePort: 5000
+                name: myapi-service
+                port: 
+                  number: 5000
