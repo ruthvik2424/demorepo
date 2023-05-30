@@ -10,5 +10,6 @@ spec:
           - pathType: Prefix
             path: "/process"
             backend:
-              serviceName: myapi-service
-              servicePort: 5000
+              service:
+                serviceName: myapi-service
+                servicePort: 5000
