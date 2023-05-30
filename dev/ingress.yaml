@@ -7,7 +7,7 @@ spec:
     - host: "api.com"
       http:
         paths:
-          - pathType: Suffix
+          - pathType: Prefix
             path: "/process"
             backend:
               service:
