@@ -5,8 +5,10 @@ metadata:
 spec:
   selector:
     app: my-api
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 5000
-      targetPort: 5000 
+      targetPort: 5000
+      nodePort: 31400
 
