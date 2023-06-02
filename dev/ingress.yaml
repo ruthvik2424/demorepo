@@ -4,7 +4,7 @@ metadata:
   name: api-ingress
 spec:
   rules:
-    - host: localhost:2000
+    - host: myapi.com
       http:
         paths:
           - pathType: Prefix
