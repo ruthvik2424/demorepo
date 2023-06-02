@@ -5,7 +5,6 @@ flask
 flask_restful
 librosa
 pandas 
-sklearn
 joblib
 matplotlib
 tensorflow
