@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mydemoapp-deploy
+  name: mydemoapp
   namespace: argocd
   annotations: 
     argocd-image-updater.argoproj.io/image-list: quay.io/miniprojects/saysmooth:~v0.2
