@@ -6,11 +6,13 @@ metadata:
   annotations: 
     argocd-image-updater.argoproj.io/image-list: quay.io/miniprojects/saysmooth:~v0.2
     argocd-image-updater.argoproj.io/write-back-method: git
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/ruthvik2424/demorepo.git
-    targetRevision: HEAD
+    repoURL: ssh://git@github.com/ruthvik2424/demorepo.git
+    targetRevision: main
     path: dev
   destination: 
     server: https://kubernetes.default.svc
