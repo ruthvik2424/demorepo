@@ -3,9 +3,11 @@ kind: Application
 metadata:
   name: mydemoapp-deploy
   namespace: argocd
+  annotations: 
+    argocd-image-updater.argoproj.io/image-list: quay.io/miniprojects/saysmooth:~v0.2
+    argocd-image-updater.argoproj.io/write-back-method: git
 spec:
   project: default
-
   source:
     repoURL: https://github.com/ruthvik2424/demorepo.git
     targetRevision: HEAD
