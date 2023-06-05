@@ -4,7 +4,7 @@ metadata:
   name: api-ingress
 spec:
   rules:
-    - host: myapi.api
+    - host: saysmooth.infinityfreeapp.com
       http:
         paths:
           - pathType: Prefix
