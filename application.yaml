@@ -13,6 +13,7 @@ spec:
   source:
     repoURL: ssh://git@github.com/ruthvik2424/demorepo.git
     targetRevision: main
+    path: main
   destination: 
     server: https://kubernetes.default.svc
     namespace: mydemoapp
