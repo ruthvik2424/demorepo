@@ -1,13 +1,9 @@
 name: Building image
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push]
 
 jobs:
-  build-image:
+  build:
     runs-on: ubuntu-latest
     
     steps: 
