@@ -5,7 +5,7 @@ from keras.models import Sequential, model_from_json
 from flask import Flask, request, jsonify
 import base64
 import tempfile
-# nothing
+
 app = Flask(__name__)
 
 # Check if the model file exists
