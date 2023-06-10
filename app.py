@@ -63,6 +63,7 @@ def post():
     evaluation_result = loaded_model.evaluate(test_X, test_y)
     loss = evaluation_result
     accuracy = evaluation_result
+    # its Working
 
     # Return the results as a JSON response
     result = {
