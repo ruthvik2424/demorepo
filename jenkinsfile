@@ -4,9 +4,10 @@ pipeline {
     cron('* * * * *')
   }
   stages {
-    stage('Hello World') {
+    stage('Build The Docker Image') {
       steps {
-        echo 'Hello World'
+        podman build -t docker.io/ruthvik2424/demoproject:1.7.0 .
+        podman push docker.io/ruthvik2424/demoproject:1.7.0
       }
     }
   }
